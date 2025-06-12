@@ -1,0 +1,14 @@
+# 白名单设置
+system:
+  white-list:
+    paths:
+      - /api/v1/system/login
+      - /api/v1/system/logout
+      - /api/v1/system/cas
+      - /api/v1/system/cas/**/token
+      - /api/v1/system/dingTalkLogin
+      - /api/v1/customFormFill/**/formFieldData/**
+      - /api/v1/system/tus_hook
+      - /api/v1/system/xwfwsso/
+      - /api/v1/system/wxLogin/*
+      - /api/v1/system/wxBlind

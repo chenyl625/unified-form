@@ -1,0 +1,17 @@
+xxl:
+  enable: true
+  job:
+    admin:
+      addresses: http://****
+      #addresses: http://*****
+    executor:
+      appname: csxg
+      address:
+      ip:
+      port:
+      logpath: ./logs/xxl
+      logretentiondays: 30
+    login:
+      username: csxg
+      password: csxg
+    accessToken:

@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://*******:3306/gs_common_table_system?autoReconnect=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT
+      username: gs_common_table_system
+      password: gs_common_table_system
+      validation-query: select 1
+      test-while-idle: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      # connection-properties: config.decrypt=true;config.decrypt.key=${publickey}  #不开启则密码不用加密，开启则需要用druid的ConfigTools进行加密
+    mysql-report:
+      url: jdbc:mysql://******:3306/sjgl_report?autoReconnect=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT
+      username: sjgl_report
+      password: sjgl_report
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      validation-query: select 1
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      # 关闭重试机制
+      break-after-acquire-failure: true
+      connection-error-retry-attempts: 0
+    pgsql-sjgl:
+      url: jdbc:postgresql://*****:5432/sjgl_business
+      username: postgres
+      password: 123456
+      driver-class-name: org.postgresql.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      validation-query: select 1
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  redis:
+    database: 4
+    host: 192.168.1.227
+    port: 6379
+immediateExecutionTask:
+  enable: true
+baseUrl: http://localhost:8990
+jimuUrl: http://*******
+
+publickey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJ4xkmqt0+9E450U2tBnQsLZEr7Ae3k9V8b6s9z9f7gTX+SN3H/yUHh0x4/+9s06VVtuLfhhSuhH65ZON/cVYzUCAwEAAQ==

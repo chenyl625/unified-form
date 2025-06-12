@@ -1,0 +1,94 @@
+server:
+  port: 8990
+  servlet:
+    session:
+      tracking-modes: cookie
+      cookie:
+        # 去掉url中的jsessionid，只允许cookie传输
+        http-only: true
+  max-http-header-size: 65546
+spring:
+  profiles:
+    active: dev
+    include: logging,white-list,knife4j,xxl,aj
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    druid:
+      # 启用监控页面，10+版本要手动开启监控页面
+      stat-view-servlet:
+        enabled: true
+        #        login-username: root
+        #        login-password: jfbrother_2016
+        allow:
+      filters: config,stat,wall,slf4j,mergeStat
+      filter:
+        stat:
+          # 慢sql记录
+          slow-sql-millis: 5000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        # dialect: org.hibernate.dialect.Oracle10gDialect
+        dialect: org.hibernate.dialect.MySQL5Dialect
+      hibernate.format_sql: true
+  freemarker:
+    template-loader-path:
+      - classpath:/template
+  activiti:
+    check-process-definitions: false
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 300MB
+      max-request-size: 300MB
+  cache:
+    redis:
+      time-to-live: 0ms
+    type: redis
+cas:
+  server-url-prefix: http://cas.jfbrother.com/cas-jfsso
+  server-login-url: http://cas.jfbrother.com/cas-jfsso/login
+  client-host-url: http://localhost:${server.port}
+  validation-type: cas
+  authentication-url-patterns:
+    - /api/v1/system/cas
+#设置欢迎页面（默认是swagger2文档首页）
+welcome: doc.html
+system:
+  filter:
+    sign:
+      enable: false #签名拦截器被关闭
+  api:
+    listAll:
+      max: 1000
+    pageable:
+      default:
+        page: 0
+        size: 10
+        sort: createTime
+  file:
+    tus:
+      endpoint: http://*****/files/
+      #生存时间(天)
+      ttl: 7
+    minio:
+      endpoint: http://******
+      bucketName: onetable
+      accessKey: admin
+      secretKey: xxxxxxx
+    # 临时文件夹,后面的斜杠不得省略
+    temp: ./temp/
+    # 上传路径
+    upload: /Applications/work/jfbrother/zjbti/common/ybtfiles
+  password:
+    default: 123456
+  cas:
+    token:
+      # 使用cas进行登录时，token在redis中存储的有效时间
+      expire-time: 300000
+  # 系统数据的公司id（暂时是固定的）
+  companyId: ff8080816cd213cd016cd23a68610000

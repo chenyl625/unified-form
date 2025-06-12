@@ -1,0 +1,17 @@
+package com.jfbrother.digitalPortraitSnap.model.param;
+
+import com.jfbrother.digitalPortraitSnap.model.GsStuTagRelationModel;
+import com.alibaba.fastjson.annotation.JSONType;
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+
+/**
+ *  学生标签关系表传输对象
+ * @author xinz 2023-03-28
+ */
+@Data
+@ApiModel("学生标签关系表传输对象param")
+@JSONType(orders = { "id", "stuCode", "tagId", "deleteFlag", "remark", "orderBy", "createId", "createTime", "updateId", "updateTime"})
+public class GsStuTagRelationModelParam extends GsStuTagRelationModel {
+
+}

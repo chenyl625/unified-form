@@ -1,0 +1,38 @@
+# https://doc.xiaominfo.com/knife4j/documentation/enhance.html
+swagger:
+  enable: true
+knife4j:
+  enable: true
+  documents:
+    - group: 2.X版本
+      name: 接口签名
+      locations: classpath:sign/*
+  setting:
+    language: zh-CN
+    enableSwaggerModels: true
+    enableDocumentManage: true
+    swaggerModelName: 实体类列表
+    enableVersion: false
+    enableReloadCacheParameter: false
+    enableAfterScript: true
+    enableFilterMultipartApiMethodType: POST
+    enableFilterMultipartApis: false
+    enableRequestCache: true
+    enableHost: false
+    enableHostText: 192.168.0.193:8000
+    enableHomeCustom: true
+    homeCustomLocation: classpath:markdown/home.md
+    enableSearch: true
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: ''
+    enableDynamicParameter: false
+    enableDebug: true
+    enableOpenApi: false
+    enableGroup: true
+  cors: false
+  production: false
+  basic:
+    enable: false
+    username: admin
+    password: xxxxxxxxx

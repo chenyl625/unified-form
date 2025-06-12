@@ -1,0 +1,15 @@
+package com.jfbrother.customForm.dao;
+
+
+import com.jfbrother.baseserver.dao.BaseRepository;
+import com.jfbrother.customForm.jpa.CustomFormReleaseTask;
+import org.springframework.stereotype.Repository;
+
+/**
+*  自定义表单发布环节数据库操作对象
+* @author chenyl@jfbrother.com 2022-07-04
+*/
+@Repository
+public interface CustomFormReleaseTaskRepository extends BaseRepository<CustomFormReleaseTask> {
+
+}

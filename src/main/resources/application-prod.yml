@@ -1,0 +1,82 @@
+swagger:
+  enable: true
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://10.50.8.189:3306/gs_common_table_system?autoReconnect=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT
+      username: gs_common_table_system
+      password: gs_common_table_system
+      validation-query: select 1
+      test-while-idle: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      #connection-properties: config.decrypt=true;config.decrypt.key=${publickey}
+    mysql-report:
+      url: jdbc:mysql://10.50.8.189:3306/sjgl_report?autoReconnect=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT
+      username: sjgl_report
+      password: sjgl_report
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      validation-query: select 1
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      # 关闭重试机制
+      break-after-acquire-failure: true
+      connection-error-retry-attempts: 0
+    pgsql-sjgl:
+      url: jdbc:postgresql://10.50.8.181:5432/sjgl_business
+      username: central_role
+      password: central_role
+      driver-class-name: org.postgresql.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      validation-query: select 1
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  redis:
+    database: 4
+    host: 10.50.8.190
+    port: 6379
+    password: zjbti123456
+cas:
+  server-url-prefix: https://cas.zjbti.net.cn/lyuapServer/
+  server-login-url: https://cas.zjbti.net.cn/lyuapServer/login
+  # 后端地址
+  client-host-url: http://zdtyc.zjbti.net.cn/jfbrother
+  validation-type: cas
+  authentication-url-patterns:
+    - /api/v1/system/cas
+    - /api/v1/system/xwfwsso/
+logging:
+  level:
+    org.hibernate.SQL: info
+    org.hibernate.type.descriptor.sql.BasicBinder: info
+immediateExecutionTask:
+  enable: true
+baseUrl: http://zdtyc.zjbti.net.cn/jfbrother
+jimuUrl: http://10.50.8.190:8088
+system:
+  file:
+    tus:
+      endpoint: http://zdtyc.zjbti.net.cn/tusd/files
+      #生存时间(天)
+      ttl: 7
+    minio:
+      endpoint: http://10.50.8.190:9000
+      bucketName: onetable
+      accessKey: admin
+      secretKey: jfbrother_2016
+
+#  token:
+#    # 失效时间15分钟(900秒)
+#    expiration: 1800
+
+#        slf4j:
+#          # 输出可执行的SQL
+#          statement-executable-sql-log-enable: true
+#          enabled: true
+#          data-source-log-enabled: true
+#publickey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJ4xkmqt0+9E450U2tBnQsLZEr7Ae3k9V8b6s9z9f7gTX+SN3H/yUHh0x4/+9s06VVtuLfhhSuhH65ZON/cVYzUCAwEAAQ==
+
+

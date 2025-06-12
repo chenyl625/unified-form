@@ -1,0 +1,32 @@
+# 日志设置
+logging:
+  level:
+    # 在使用@ApiModelProperty注解在字段上时，
+    # 如果字段的类型为Long或是int类型，
+    # 那么程序启动后，访问swagger-ui.html的页面，程序会报错
+    # java.lang.NumberFormatException: For input string: ""
+    # 在swagger的官方文档中介绍是一个bug；可以忽略这个错误，如果看着不爽，可以调整日志的级别
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+    org.hibernate.SQL: off
+    org.hibernate.type.descriptor.sql.BasicBinder: off
+    com.jfbrother: trace
+    com.jfbrother.baseserver.controller.LoginController: trace
+    com.jfbrother.baseserver.version.CustomRequestMappingHandlerMapping: error
+    # 去除类似Generating unique operation named: getUsingGET_1的无用日志
+    springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator: off
+    # retrofit日志
+    com.github.lianjiatech.retrofit.spring.boot.interceptor.DefaultLoggingInterceptor: off
+    # xxl日志
+    com.xxl.job: off
+    # rabbitmq日志
+    org.springframework.amqp.rabbit: error
+    # 屏蔽discard long time none received connection警告
+    com.alibaba.druid.pool.DruidAbstractDataSource: error
+    com.anji.captcha.util.CacheUtil: error
+  pattern:
+    console: "%clr(%d{yyyy/MM/dd-HH:mm:ss}){cyan} [%thread] %clr(%-5p)level %clr(%logger){magenta}- %msg%n"
+    file: "%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n"
+  file:
+    max-history: 7
+    max-size: 10MB
+  path: logs
